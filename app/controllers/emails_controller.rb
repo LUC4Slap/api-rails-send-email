@@ -8,6 +8,11 @@ class EmailsController < ApplicationController
     render json: @emails
   end
 
+  def send_email
+    email = email_params
+    UserMailer.send_mail(email).deliver_now
+  end
+
   # GET /emails/1
   def show
     render json: @email
