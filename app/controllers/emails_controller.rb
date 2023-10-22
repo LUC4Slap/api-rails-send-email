@@ -9,8 +9,13 @@ class EmailsController < ApplicationController
   end
 
   def send_email
-    email = email_params
-    UserMailer.send_mail(email).deliver_now
+    email = EmailMailer.send_mail(
+      from: email_params[:from],
+      subject: email_params[:subject],
+      body: email_params[:body],
+    )
+    puts email
+    email.deliver_now
   end
 
   # GET /emails/1
