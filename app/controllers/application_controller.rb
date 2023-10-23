@@ -19,6 +19,7 @@ class ApplicationController < ActionController::API
     def atuhorized_user
         decode_token = decode_token()
         if decode_token
+            @decode_token_user = decode_token
             user_id = decode_token[0]['user_id']
             @user = User.find_by(id: user_id)
         end

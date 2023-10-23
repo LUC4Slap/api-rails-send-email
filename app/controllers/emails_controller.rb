@@ -4,7 +4,7 @@ class EmailsController < ApplicationController
 
   # GET /emails
   def index
-    @emails = Email.all
+    @emails = @user.emails
 
     render json: @emails
   end
@@ -25,7 +25,8 @@ class EmailsController < ApplicationController
 
   # POST /emails
   def create
-    @email = Email.new(email_params)
+    puts "========= #{@decode_token_user} ============="
+    @email = @user.emails.new(email_params)
 
     if @email.save
       UserMailer.send_mail(@email).deliver_now
@@ -37,7 +38,7 @@ class EmailsController < ApplicationController
 
   # PATCH/PUT /emails/1
   def update
-    if @email.update(email_params)
+    if@user.emails.update(email_params)
       render json: @email
     else
       render json: @email.errors, status: :unprocessable_entity
@@ -46,7 +47,7 @@ class EmailsController < ApplicationController
 
   # DELETE /emails/1
   def destroy
-    @email.destroy
+    @user.emails.destroy
   end
 
   private
