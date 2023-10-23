@@ -14,7 +14,6 @@ class EmailsController < ApplicationController
       subject: email_params[:subject],
       body: email_params[:body],
     )
-    puts email
     email.deliver_now
   end
 
