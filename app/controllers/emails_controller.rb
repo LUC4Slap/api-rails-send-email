@@ -1,4 +1,5 @@
 class EmailsController < ApplicationController
+  before_action :authorize
   before_action :set_email, only: %i[ show update destroy ]
 
   # GET /emails
