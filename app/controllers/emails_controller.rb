@@ -4,7 +4,8 @@ class EmailsController < ApplicationController
 
   # GET /emails
   def index
-    @emails = @user.emails
+    # @emails = Email.all
+    @emails = Email.by_user(@decode_token_user[0]['user_id'])
 
     render json: @emails
   end
@@ -20,7 +21,7 @@ class EmailsController < ApplicationController
 
   # GET /emails/1
   def show
-    render json: @email
+    render json: @user.emails
   end
 
   # POST /emails

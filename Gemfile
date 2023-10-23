@@ -41,11 +41,7 @@ gem 'letter_opener', group: :development
 
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
-
-gem 'rack-cors'
-gem 'devise' 
-gem 'devise-jwt' 
-gem 'jsonapi-serializer'
+gem 'pg'
 # gem 'mailcatcher', '~> 0.9.0'
 
 group :development, :test do
@@ -57,4 +53,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
