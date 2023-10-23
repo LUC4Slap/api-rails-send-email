@@ -25,7 +25,6 @@ class EmailsController < ApplicationController
 
   # POST /emails
   def create
-    puts "========= #{@decode_token_user} ============="
     @email = @user.emails.new(email_params)
 
     if @email.save
