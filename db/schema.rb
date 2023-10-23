@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_20_192357) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_143231) do
   create_table "emails", force: :cascade do |t|
     t.text "from"
     t.string "subject"
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_192357) do
     t.integer "userId"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_emails_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,4 +31,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_192357) do
     t.text "password"
   end
 
+  add_foreign_key "emails", "users"
 end
