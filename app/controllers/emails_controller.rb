@@ -21,7 +21,7 @@ class EmailsController < ApplicationController
 
   def get_emails_not_sent
     email = Email.not_sent(@decode_token_user[0]['user_id'])
-    render json: email
+    render json: {data: email}
   end
 
   # GET /emails/1
