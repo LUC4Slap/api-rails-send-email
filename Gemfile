@@ -42,6 +42,7 @@ gem 'letter_opener', group: :development
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
+gem 'tty-spinner'
 # gem 'mailcatcher', '~> 0.9.0'
 
 group :development, :test do

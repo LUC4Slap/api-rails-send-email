@@ -19,6 +19,11 @@ class EmailsController < ApplicationController
     email.deliver_now
   end
 
+  def get_emails_not_sent
+    email = Email.not_sent(@decode_token_user[0]['user_id'])
+    render json: email
+  end
+
   # GET /emails/1
   def show
     render json: @user.emails
@@ -27,7 +32,7 @@ class EmailsController < ApplicationController
   # POST /emails
   def create
     @email = @user.emails.new(email_params)
-
+    # @email.sent = false
     if @email.save
       UserMailer.send_mail(@email).deliver_now
       render json: @email, status: :created, location: @email
@@ -58,6 +63,6 @@ class EmailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def email_params
-      params.require(:email).permit(:from, :subject, :body)
+      params.require(:email).permit(:from, :subject, :body, :sent)
     end
 end

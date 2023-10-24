@@ -4,6 +4,7 @@ class CreateEmails < ActiveRecord::Migration[7.0]
       t.string :from
       t.string :subject
       t.text :body
+      t.boolean :sent, :default => false
       t.integer :userId
 
       t.timestamps
