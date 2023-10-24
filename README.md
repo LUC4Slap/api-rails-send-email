@@ -5,8 +5,8 @@
 ```sh
     # Comandos docker-compose para subir aplicação
     docker-compose build
-    docker-compose run web bundele exec rails db:create
-    docker-compose run web bundele exec rails db:migrate
+    docker-compose run web rails db:create
+    docker-compose run web rails db:migrate
     docker-compose up --build
 
     # Comando para gerar migration para adicionar campo na tabela ou remover
