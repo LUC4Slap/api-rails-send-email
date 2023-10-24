@@ -12,7 +12,7 @@ class EmailsController < ApplicationController
 
   def send_email
     email = EmailMailer.send_mail(
-      from: email_params[:from],
+      from: email_params[:from], 
       subject: email_params[:subject],
       body: email_params[:body],
     )
@@ -34,7 +34,7 @@ class EmailsController < ApplicationController
     @email = @user.emails.new(email_params)
     # @email.sent = false
     if @email.save
-      UserMailer.send_mail(@email).deliver_now
+      # UserMailer.send_mail(@email).deliver_now
       render json: @email, status: :created, location: @email
     else
       render json: @email.errors, status: :unprocessable_entity
